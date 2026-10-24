@@ -887,3 +887,14 @@ html, body { color-scheme: light !important; }
 /* ===== OC Pass skin v13: 強制整站 light scheme(iOS 鍵盤/表單控制項) ===== */
 :root { color-scheme: light !important; }
 html, body { color-scheme: light !important; }
+
+/* ===== OC Pass skin v14: 全部改方框(膠囊→方框、圓形→方形) ===== */
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
+/* 保險:以百分比/超大數值做的圓形與膠囊也一併歸零 */
+[class*="Avatar"], [class*="avatar"], [class*="round"], [class*="Round"],
+[class*="pill"], [class*="Pill"], [class*="chip"], [class*="Chip"],
+[class*="Badge"], [class*="badge"], [class*="Tag"], [class*="tag"] {
+  border-radius: 0 !important;
+}
