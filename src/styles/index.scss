@@ -635,3 +635,13 @@ html, body { background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B7
 
 /* 頭像圓角 */
 .Avatar { border-radius: 12px !important; }
+
+/* ===== OC Pass skin v3: 讓漸層真正露出來 + 字體覆蓋 ===== */
+:root, body, .theme-light, .theme-dark {
+  --font-family: 'Campton', 'Avenir Next', 'Montserrat', 'Huninn', system-ui, sans-serif !important;
+  --font-family-rounded: 'Campton', 'Avenir Next', 'Montserrat', 'Huninn', system-ui, sans-serif !important;
+}
+html { background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%) !important; background-attachment: fixed !important; }
+body { background: transparent !important; font-family: var(--font-family) !important; }
+#root, #root > div, .App, .whole-app, .AppWrapper { background: transparent !important; }
+.theme-light body, .theme-dark body { background: transparent !important; }
