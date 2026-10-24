@@ -898,3 +898,15 @@ html, body { color-scheme: light !important; }
 [class*="Badge"], [class*="badge"], [class*="Tag"], [class*="tag"] {
   border-radius: 0 !important;
 }
+
+/* ===== OC Pass skin v15: 不是直角,是「像泡泡一樣的圓角方形」 ===== */
+*, *::before, *::after { border-radius: 14px !important; }
+[class], [class]::before, [class]::after { border-radius: 14px !important; }
+/* 小元件(點、指示燈、勾選)維持接近圓形,不要被 14px 撐成怪形 */
+[class*="dot"], [class*="Dot"], [class*="indicator"], [class*="Indicator"],
+[class*="status"], [class*="Status"], [class*="online"], [class*="Online"] {
+  border-radius: 50% !important;
+}
+/* 氣泡/輸入框沿用 14px */
+[class*="message-content"], [class*="Composer"] textarea, [class*="Composer"] input,
+[class*="Composer"] [contenteditable="true"] { border-radius: 14px !important; }
