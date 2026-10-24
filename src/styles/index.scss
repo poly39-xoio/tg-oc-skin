@@ -929,3 +929,18 @@ html, body { color-scheme: light !important; }
 /* 標題列:只有 bar 本身與圖示白 */
 .MiddleHeader, [class*="MiddleHeader"] { color: #FFFFFF !important; }
 [class*="MiddleHeader"] svg { color: #FFFFFF !important; fill: currentColor !important; }
+
+/* ===== OC Pass skin v17: 三點選單可見、選單字加大、輸入字更深 ===== */
+button[class*="menu"], button[class*="Menu"], [class*="MenuButton"], [class*="menu-button"],
+[class*="btn-menu"], [class*="MenuBtn"] {
+  background: transparent !important; color: #FFFFFF !important;
+}
+button[class*="menu"] svg, button[class*="Menu"] svg, [class*="MenuButton"] svg { color:#FFFFFF !important; fill:#FFFFFF !important; }
+[class*="MenuItem"], [class*="menu-item"], [class*="Menu"] li, [class*="Dropdown"] li {
+  font-size: 15px !important; line-height: 1.5 !important;
+}
+[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"],
+[class*="form-control"] {
+  color: #000000 !important; -webkit-text-fill-color: #000000 !important; caret-color: #000000 !important;
+}
+[class*="Composer"] textarea::placeholder { color: #3B454E !important; -webkit-text-fill-color: #3B454E !important; }
