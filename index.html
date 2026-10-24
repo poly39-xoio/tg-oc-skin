@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
 
   <title>
-    OC Pass · Telegram v7
+    OC Pass · Telegram v9
   </title>
 
-  <meta name="title" content="OC Pass · Telegram v7">
+  <meta name="title" content="OC Pass · Telegram v9">
   <meta name="oc-skin" content="v5">
   <meta name="description"
     content="Telegram is a cloud-based mobile and desktop messaging app with a focus on security and speed.">
@@ -83,7 +83,8 @@
         if (r.width * r.height < 40000) continue;
         var cs = getComputedStyle(el);
         var m = /rgba?\((\d+), (\d+), (\d+)/.exec(cs.backgroundColor);
-        if (m && lum(+m[1], +m[2], +m[3]) < 45) {
+        var big = (r.width * r.height) > (window.innerWidth * window.innerHeight * 0.55);
+        if (m && (lum(+m[1], +m[2], +m[3]) < 45 || (big && lum(+m[1], +m[2], +m[3]) < 95))) {
           el.style.setProperty('background-color', 'transparent', 'important');
           el.style.setProperty('background-image', 'none', 'important');
         }

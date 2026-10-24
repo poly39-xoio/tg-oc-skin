@@ -840,3 +840,11 @@ body, #root, #root > div { background: transparent !important; }
 }
 [class*="Composer"] textarea::placeholder,
 [class*="Composer"] [contenteditable="true"]::before { color: #4D5761 !important; -webkit-text-fill-color: #4D5761 !important; }
+
+/* ===== OC Pass skin v9: 把「上下」規則縮回真正的 bar,避免整頁被塗成深石板 ===== */
+.MiddleHeader, .Composer { background: #3F4A54 !important; }
+.MiddleHeader * { color: #FFFFFF !important; }
+[class*="Composer"] svg, [class*="Composer"] button, [class*="Composer"] [class*="icon"] { color: #FFFFFF !important; fill: currentColor !important; }
+[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"] {
+  background: #E1EBF1 !important; color: #161B1D !important; -webkit-text-fill-color: #161B1D !important; caret-color: #161B1D !important;
+}
