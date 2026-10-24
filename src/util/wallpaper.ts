@@ -56,15 +56,15 @@ export const RESET_WALLPAPER_SETTINGS: Partial<IThemeSettings> = {
 // Negative intensity => the pattern masks the gradient (doodles reveal the animated gradient over
 // a dark base), matching Telegram's dark-wallpaper convention.
 export const DEFAULT_DARK_WALLPAPER: DefaultWallpaper = {
-  colors: ['#4f5bd5', '#962fbf', '#dd6cb9', '#fec496'],
-  patternColor: getWallpaperPatternColor('#4f5bd5'),
-  intensity: -DEFAULT_PATTERN_INTENSITY,
+  colors: ['#7C8D9A', '#6E7F8D', '#5C6B78'],
+  patternColor: getWallpaperPatternColor('#6E7F8D'),
+  intensity: 0,
 };
 
 export const DEFAULT_LIGHT_WALLPAPER: DefaultWallpaper = {
-  colors: ['#bdcd8c', '#8eba89', '#83b28f', '#c5d3b0'],
-  patternColor: getWallpaperPatternColor('#bdcd8c'),
-  intensity: DEFAULT_PATTERN_INTENSITY,
+  colors: ['#7C8D9A', '#6E7F8D', '#5C6B78'],
+  patternColor: getWallpaperPatternColor('#6E7F8D'),
+  intensity: 0,
 };
 
 // Negative intensity means the pattern masks the gradient (doodles reveal it over a dark base),
