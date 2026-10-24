@@ -883,3 +883,7 @@ body::before {
 }
 /* 鍵盤:強制 light scheme(iOS 才會用亮色鍵盤) */
 html, body { color-scheme: light !important; }
+
+/* ===== OC Pass skin v13: 強制整站 light scheme(iOS 鍵盤/表單控制項) ===== */
+:root { color-scheme: light !important; }
+html, body { color-scheme: light !important; }
