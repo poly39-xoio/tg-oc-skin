@@ -848,3 +848,20 @@ body, #root, #root > div { background: transparent !important; }
 [class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"] {
   background: #E1EBF1 !important; color: #161B1D !important; -webkit-text-fill-color: #161B1D !important; caret-color: #161B1D !important;
 }
+
+/* ===== OC Pass skin v11: 背景=中間石板漸層(比 own 泡泡淺、比對方泡泡深) ===== */
+/* 不再把整個 Composer 容器塗深,只留標題列 */
+.Composer { background: transparent !important; }
+[class*="Composer"] { background-color: transparent !important; }
+[class*="Composer"] [class*="form-control"], [class*="Composer"] textarea, [class*="Composer"] input {
+  background: #E1EBF1 !important; color: #161B1D !important; -webkit-text-fill-color: #161B1D !important;
+}
+/* 中間色背景:比 #3F4A54 淺、比 #E1EBF1 深 */
+html, body { background: linear-gradient(180deg, #8A9BA8 0%, #7C8D9A 45%, #6B7A87 100%) !important; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, #8A9BA8 0%, #7C8D9A 45%, #6B7A87 100%) !important;
+}
+[class*="MiddleColumn"], [class*="Chat"], [class*="MessageList"], [class*="messages-container"] {
+  background: transparent !important;
+}
