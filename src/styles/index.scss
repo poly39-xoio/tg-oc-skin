@@ -761,7 +761,6 @@ body, #root, #root > div, [class*="App"], [class*="whole-app"] { background: tra
   color: #FFFFFF !important;
   border-color: rgba(255,255,255,.12) !important;
 }
-[class*="MiddleHeader"] *, [class*="Composer"] * { color: #FFFFFF !important; }
 [class*="MiddleHeader"] svg, [class*="Composer"] svg { fill: currentColor !important; }
 
 /* 輸入框:淡霧藍 + 墨字 */
@@ -818,14 +817,12 @@ body, #root, #root > div { background: transparent !important; }
 
 /* 上下:深石板 + 白字 */
 [class*="MiddleHeader"], [class*="Composer"] { background: #3F4A54 !important; color: #fff !important; }
-[class*="MiddleHeader"] *, [class*="Composer"] * { color: #fff !important; }
 [class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [class*="form-control"] {
   background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important;
 }
 
 /* ===== OC Pass skin v8: 修輸入框白字看不見 + 只讓圖示白 ===== */
 [class*="MiddleHeader"], [class*="Composer"] { background: #3F4A54 !important; }
-[class*="MiddleHeader"] * { color: #FFFFFF !important; }
 /* 只有圖示/按鈕白,不要把輸入文字一起蓋白 */
 [class*="Composer"] svg, [class*="Composer"] button, [class*="Composer"] [class*="icon"] {
   color: #FFFFFF !important; fill: currentColor !important;
@@ -910,3 +907,25 @@ html, body { color-scheme: light !important; }
 /* 氣泡/輸入框沿用 14px */
 [class*="message-content"], [class*="Composer"] textarea, [class*="Composer"] input,
 [class*="Composer"] [contenteditable="true"] { border-radius: 14px !important; }
+
+/* ===== OC Pass skin v16: 選單/輸入框文字可見性(移除先前「所有子元素白字」的規則) ===== */
+[class*="Menu"], [class*="menu"], [class*="Dropdown"], [class*="dropdown"],
+[class*="Popup"], [class*="popup"], [class*="Modal"], [class*="modal"] {
+  background: #E1EBF1 !important; color: #161B1D !important;
+}
+[class*="Menu"] *, [class*="Dropdown"] *, [class*="Popup"] *, [class*="Modal"] * {
+  color: #161B1D !important; -webkit-text-fill-color: #161B1D !important;
+}
+[class*="MenuItem"]:hover, [class*="menu-item"]:hover { background: #D6E0E7 !important; }
+
+/* 輸入框:淡底墨字 */
+[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"],
+[class*="form-control"] {
+  background: #E1EBF1 !important; color: #161B1D !important;
+  -webkit-text-fill-color: #161B1D !important; caret-color: #161B1D !important;
+}
+[class*="Composer"] textarea::placeholder { color: #4D5761 !important; -webkit-text-fill-color: #4D5761 !important; }
+
+/* 標題列:只有 bar 本身與圖示白 */
+.MiddleHeader, [class*="MiddleHeader"] { color: #FFFFFF !important; }
+[class*="MiddleHeader"] svg { color: #FFFFFF !important; fill: currentColor !important; }
