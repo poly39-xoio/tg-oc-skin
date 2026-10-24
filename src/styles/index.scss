@@ -750,3 +750,47 @@ body, #root, .App, .whole-app { background: transparent !important; }
 /* 列表/側欄 */
 .LeftColumn, .MiddleColumn, .RightColumn { background: #E1EBF1 !important; }
 .LeftColumn .ListItem, .chat-item { border-radius: 12px !important; }
+
+/* ===== OC Pass skin v6: 用「屬性選擇器」命中 CSS Modules 的雜湊類名 ===== */
+html { background: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) fixed !important; }
+body, #root, #root > div, [class*="App"], [class*="whole-app"] { background: transparent !important; }
+
+/* 頂部/底部:深石板 + 白字(OC Pass 的 accent) */
+[class*="MiddleHeader"], [class*="Composer"] {
+  background: #3F4A54 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255,255,255,.12) !important;
+}
+[class*="MiddleHeader"] *, [class*="Composer"] * { color: #FFFFFF !important; }
+[class*="MiddleHeader"] svg, [class*="Composer"] svg { fill: currentColor !important; }
+
+/* 輸入框:淡霧藍 + 墨字 */
+[class*="Composer"] [class*="form-control"],
+[class*="Composer"] [class*="message-input-wrapper"],
+[class*="Composer"] textarea, [class*="Composer"] input {
+  background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important;
+}
+[class*="Composer"] textarea::placeholder { color: #4D5761 !important; }
+
+/* 聊天底:石板漸層;壓掉桌布 canvas/圖片 */
+[class*="Wallpaper"], [class*="chat-background"], [class*="ChatBackground"] {
+  background: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) !important;
+  background-image: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) !important;
+}
+[class*="Wallpaper"] canvas, [class*="Wallpaper"] img { display: none !important; }
+
+/* 氣泡:對方=淡霧藍墨字;自己=深石板白字 */
+[class*="message-content"] { border-radius: 14px !important; }
+[class*="message-content"] { background: #E1EBF1 !important; color: #161B1D !important; }
+.Message.own [class*="message-content"], .own [class*="message-content"],
+[class*="Message"][class*="own"] [class*="message-content"] {
+  background: #3F4A54 !important; color: #FFFFFF !important;
+}
+.Message.own [class*="text-content"], .own [class*="text-content"],
+.Message.own [class*="message-text"], .own [class*="message-text"] { color: #FFFFFF !important; }
+[class*="message-content"] [class*="text-content"],
+[class*="message-content"] [class*="message-text"] { color: #161B1D !important; }
+.Message.own [class*="message-meta"], .own [class*="message-meta"] { color: rgba(255,255,255,.72) !important; }
+
+/* 左欄/清單 */
+[class*="LeftColumn"], [class*="MiddleColumn"] { background: #E1EBF1 !important; }
