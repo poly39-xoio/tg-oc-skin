@@ -71,6 +71,32 @@
   <div id="portals"></div>
   <script vite-ignore src="./compatTest.js"></script>
   <script type="module" src="./src/index.tsx"></script>
+  <script>
+  /* OC skin v8: 執行期清除大面積近黑背景(Telegram 帳號主題/桌布殘留) */
+  (function () {
+    function lum(r, g, b) { return 0.2126 * r + 0.7152 * g + 0.0722 * b; }
+    function fix() {
+      var els = document.querySelectorAll('div,section,main,aside,header,footer,article');
+      for (var i = 0; i < els.length; i++) {
+        var el = els[i];
+        var r = el.getBoundingClientRect();
+        if (r.width * r.height < 40000) continue;
+        var cs = getComputedStyle(el);
+        var m = /rgba?\((\d+), (\d+), (\d+)/.exec(cs.backgroundColor);
+        if (m && lum(+m[1], +m[2], +m[3]) < 45) {
+          el.style.setProperty('background-color', 'transparent', 'important');
+          el.style.setProperty('background-image', 'none', 'important');
+        }
+      }
+      document.documentElement.style.setProperty('background', 'linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%)', 'important');
+      document.body.style.setProperty('background', 'transparent', 'important');
+    }
+    var n = 0;
+    var t = setInterval(function () { fix(); if (++n > 40) clearInterval(t); }, 500);
+    document.addEventListener('DOMContentLoaded', fix);
+    window.addEventListener('load', fix);
+  })();
+  </script>
 </body>
 
 </html>

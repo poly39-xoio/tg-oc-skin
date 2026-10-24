@@ -822,3 +822,21 @@ body, #root, #root > div { background: transparent !important; }
 [class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [class*="form-control"] {
   background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important;
 }
+
+/* ===== OC Pass skin v8: 修輸入框白字看不見 + 只讓圖示白 ===== */
+[class*="MiddleHeader"], [class*="Composer"] { background: #3F4A54 !important; }
+[class*="MiddleHeader"] * { color: #FFFFFF !important; }
+/* 只有圖示/按鈕白,不要把輸入文字一起蓋白 */
+[class*="Composer"] svg, [class*="Composer"] button, [class*="Composer"] [class*="icon"] {
+  color: #FFFFFF !important; fill: currentColor !important;
+}
+[class*="Composer"] textarea, [class*="Composer"] input,
+[class*="Composer"] [contenteditable="true"], [class*="Composer"] [class*="form-control"] {
+  background: #E1EBF1 !important;
+  color: #161B1D !important;
+  -webkit-text-fill-color: #161B1D !important;
+  caret-color: #161B1D !important;
+  border-radius: 14px !important;
+}
+[class*="Composer"] textarea::placeholder,
+[class*="Composer"] [contenteditable="true"]::before { color: #4D5761 !important; -webkit-text-fill-color: #4D5761 !important; }
