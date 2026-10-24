@@ -702,3 +702,51 @@ html, body, .theme-light, .theme-dark, .theme-light body, .theme-dark body {
 /* 輸入框/鈕 */
 .form-control, .input-wrapper, .MessageInput { background: var(--color-background-secondary) !important; color: var(--color-text) !important; border-radius: 14px !important; }
 .Button--round, .Composer .Button--round { background: var(--color-primary) !important; color: #fff !important; }
+
+/* ===== OC Pass skin v5: 完全對齊 OC Pass ChatView =====
+   依據 openclaw-remote-app/Sources/Views/ChatView.swift:
+   - header / inputBar 底 = Theme.accent #3F4A54,圖示白
+   - 自己氣泡 = Theme.accent #3F4A54 + 白字
+   - 對方氣泡 = Theme.panel  #E1EBF1 + 墨字
+   - 頁面底 = slate 漸層 #7C8D9A → #6E7F8D → #5C6B78
+*/
+html { background: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) fixed !important; }
+body, #root, .App, .whole-app { background: transparent !important; }
+
+/* 頂部標題列 = 深石板 + 白字 */
+.MiddleHeader, .MiddleHeader::before, .MiddleHeader::after { background: #3F4A54 !important; border-bottom: 1px solid rgba(255,255,255,.10) !important; }
+.MiddleHeader, .MiddleHeader * { color: #FFFFFF !important; }
+.MiddleHeader .icon, .MiddleHeader svg, .MiddleHeader .Button { color: #FFFFFF !important; fill: currentColor; }
+
+/* 底部輸入列 = 深石板;輸入框 = 淡霧藍 */
+.Composer, .Composer::before { background: #3F4A54 !important; border-top: none !important; }
+.Composer .icon, .Composer svg, .Composer .Button { color: #FFFFFF !important; }
+.Composer .form-control, .Composer .message-input-wrapper, .Composer .input-wrapper {
+  background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important;
+}
+.Composer .form-control::placeholder { color: #4D5761 !important; }
+
+/* 聊天底:石板漸層(壓掉所有桌布/canvas) */
+.Wallpaper, .Wallpaper > div, .Wallpaper canvas, .chat-background, .ChatBackground,
+#middle-column .Wallpaper, .MiddleColumn .Wallpaper {
+  background: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) !important;
+  background-image: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) !important;
+}
+.Wallpaper canvas, .Wallpaper img { display: none !important; }
+
+/* 氣泡:自己=深石板白字、對方=淡霧藍墨字 */
+.message-content { border-radius: 14px !important; }
+.Message .message-content { background: #E1EBF1 !important; color: #161B1D !important; box-shadow: 0 1px 2px rgba(22,27,29,.10) !important; }
+.Message .message-content .text-content, .Message .message-content .message-text,
+.Message .message-content a { color: #161B1D !important; }
+
+.Message.own .message-content, .Message.own .message-content::before,
+.Message.own .message-content .text-content, .Message.own .message-content .message-text,
+.Message.own .message-content a {
+  background: #3F4A54 !important; color: #FFFFFF !important;
+}
+.Message.own .message-content .message-meta, .Message.own .message-content .time { color: rgba(255,255,255,.72) !important; }
+
+/* 列表/側欄 */
+.LeftColumn, .MiddleColumn, .RightColumn { background: #E1EBF1 !important; }
+.LeftColumn .ListItem, .chat-item { border-radius: 12px !important; }
