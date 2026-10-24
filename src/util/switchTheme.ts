@@ -48,6 +48,7 @@ const switchTheme = (theme: ThemeKey, withAnimation: boolean) => {
   const startIndex = isDarkTheme ? 0 : 1;
   const endIndex = isDarkTheme ? 1 : 0;
   const startAt = Date.now();
+  document.documentElement.style.colorScheme = 'light';
   const themeColorTag = document.querySelector('meta[name="theme-color"]');
 
   requestMutation(() => {
@@ -59,7 +60,7 @@ const switchTheme = (theme: ThemeKey, withAnimation: boolean) => {
     }
     document.documentElement.classList.add(themeClassName);
     if (themeColorTag) {
-      themeColorTag.setAttribute('content', isDarkTheme ? '#5C6B78' : '#6E7F8D');
+      themeColorTag.setAttribute('content', '#6E7F8D');
     }
 
     setTimeout(() => {

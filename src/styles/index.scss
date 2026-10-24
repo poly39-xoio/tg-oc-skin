@@ -645,3 +645,60 @@ html { background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%
 body { background: transparent !important; font-family: var(--font-family) !important; }
 #root, #root > div, .App, .whole-app, .AppWrapper { background: transparent !important; }
 .theme-light body, .theme-dark body { background: transparent !important; }
+
+/* ===== OC Pass skin v4: 強制覆蓋(含登入後帳號主題/桌布/鍵盤) ===== */
+html, body, .theme-light, .theme-dark, .theme-light body, .theme-dark body {
+  --color-background: #E1EBF1 !important;
+  --color-background-secondary: #D6E0E7 !important;
+  --color-background-sidebar: #CED9E1 !important;
+  --color-background-secondary-accent: #CED9E1 !important;
+  --color-background-own: #CED9E1 !important;
+  --color-background-own-apple: #CED9E1 !important;
+  --color-background-selected: #D6E0E7 !important;
+  --color-background-own-selected: #C3D4DE !important;
+  --color-text: #161B1D !important;
+  --color-text-secondary: #3B454E !important;
+  --color-icon-secondary: #4D5761 !important;
+  --color-borders: #C3D2DC !important;
+  --color-borders-input: #C3D2DC !important;
+  --color-dividers: #BCCCD6 !important;
+  --color-primary: #3F4A54 !important;
+  --color-primary-shade: #4A5560 !important;
+  --color-links: #2F3B45 !important;
+  --color-chat-active: #3F4A54 !important;
+  --color-composer-button: #3F4A54 !important;
+  --color-accent-own: #3F4A54 !important;
+  --color-message-meta-own: #4D5761FF !important;
+  --color-reply-own-hover: #C3D4DE !important;
+  --color-reply-own-active: #B7CBD7 !important;
+  --color-message-reaction: #D6E0E7 !important;
+  --color-message-reaction-own: #C3D4DE !important;
+  color-scheme: light !important;
+}
+
+/* 標題列 / 輸入列 / 列表:一律淡面板 + 細邊 */
+.MiddleHeader, .Composer, .LeftColumn, .MiddleColumn, .RightColumn,
+.MiddleHeader::before, .MiddleHeader::after {
+  background: var(--color-background) !important;
+  color: var(--color-text) !important;
+}
+.Composer { border-top: 1px solid var(--color-borders) !important; }
+
+/* 聊天桌布:蓋掉任何圖片/漸層/canvas 預設 */
+.Wallpaper, .Wallpaper .background, .Wallpaper .gradient, .Wallpaper canvas,
+.chat-background, .ChatBackground, #middle-column .Wallpaper {
+  background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%) !important;
+  background-image: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%) !important;
+}
+.Wallpaper canvas { display: none !important; }
+
+/* 氣泡:自己=淡霧藍、對方=更淡一階,文字墨黑 */
+.message-content { background: var(--color-background) !important; color: var(--color-text) !important; border-radius: 14px !important; }
+.Message.own .message-content, .message-content.own, .last-in-group.own .message-content {
+  background: var(--color-background-own) !important; color: var(--color-text) !important;
+}
+.Message .message-content .text-content, .Message .message-content .message-text { color: var(--color-text) !important; }
+
+/* 輸入框/鈕 */
+.form-control, .input-wrapper, .MessageInput { background: var(--color-background-secondary) !important; color: var(--color-text) !important; border-radius: 14px !important; }
+.Button--round, .Composer .Button--round { background: var(--color-primary) !important; color: #fff !important; }
