@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
 
   <title>
-    OC Pass · Telegram v9
+    OC Pass · Telegram v10
   </title>
 
-  <meta name="title" content="OC Pass · Telegram v9">
+  <meta name="title" content="OC Pass · Telegram v10">
   <meta name="oc-skin" content="v5">
   <meta name="description"
     content="Telegram is a cloud-based mobile and desktop messaging app with a focus on security and speed.">
@@ -81,6 +81,9 @@
         var el = els[i];
         var r = el.getBoundingClientRect();
         if (r.width * r.height < 40000) continue;
+        // 跳過有文字內容的元件(訊息氣泡),只處理純背景圖層
+        if ((el.textContent || '').trim().length > 40) continue;
+        if (el.closest && el.closest('[class*="message-content"]')) continue;
         var cs = getComputedStyle(el);
         var m = /rgba?\((\d+), (\d+), (\d+)/.exec(cs.backgroundColor);
         var big = (r.width * r.height) > (window.innerWidth * window.innerHeight * 0.55);
