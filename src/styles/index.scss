@@ -794,3 +794,31 @@ body, #root, #root > div, [class*="App"], [class*="whole-app"] { background: tra
 
 /* 左欄/清單 */
 [class*="LeftColumn"], [class*="MiddleColumn"] { background: #E1EBF1 !important; }
+
+/* ===== OC Pass skin v7: 修掉 v6 過寬選擇器(對方氣泡被誤蓋) + 背景改用固定漸層層 ===== */
+/* 背景:直接鋪一層固定漸層在最底,並把 Telegram 桌布層隱藏 */
+html { background: #6E7F8D !important; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%);
+}
+body, #root, #root > div { background: transparent !important; }
+[class*="Wallpaper"], [class*="chat-background"], [class*="ChatBackground"] { opacity: 0 !important; }
+
+/* 氣泡:只有「精確的 .Message.own」才是深色;其餘一律淡霧藍墨字 */
+[class*="message-content"] { background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important; }
+[class*="message-content"] [class*="text-content"],
+[class*="message-content"] [class*="message-text"],
+[class*="message-content"] a { color: #161B1D !important; }
+
+.Message.own [class*="message-content"] { background: #3F4A54 !important; color: #FFFFFF !important; }
+.Message.own [class*="text-content"], .Message.own [class*="message-text"],
+.Message.own [class*="message-content"] a { color: #FFFFFF !important; }
+.Message.own [class*="message-meta"], .Message.own time { color: rgba(255,255,255,.72) !important; }
+
+/* 上下:深石板 + 白字 */
+[class*="MiddleHeader"], [class*="Composer"] { background: #3F4A54 !important; color: #fff !important; }
+[class*="MiddleHeader"] *, [class*="Composer"] * { color: #fff !important; }
+[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [class*="form-control"] {
+  background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important;
+}
