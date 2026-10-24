@@ -59,7 +59,7 @@ const switchTheme = (theme: ThemeKey, withAnimation: boolean) => {
     }
     document.documentElement.classList.add(themeClassName);
     if (themeColorTag) {
-      themeColorTag.setAttribute('content', isDarkTheme ? '#0e1015' : '#fff');
+      themeColorTag.setAttribute('content', isDarkTheme ? '#5C6B78' : '#6E7F8D');
     }
 
     setTimeout(() => {

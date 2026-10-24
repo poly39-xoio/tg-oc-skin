@@ -605,3 +605,33 @@ body:not(.is-ios) {
   --border-radius-modal: 1.25rem;
   --border-radius-toast: 0.75rem;
 }
+
+/* ===== OC Pass skin v2 (io 2026-10-25): 石板漸層 + 淡面板 + 14px 氣泡 ===== */
+html, body { background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%) !important; background-attachment: fixed !important; }
+#root, .App, .whole-app { background: transparent !important; }
+
+/* 主要面板(左欄/聊天區/標題列/輸入列) */
+.LeftColumn, .MiddleColumn, .RightColumn,
+.MiddleHeader, .Composer, .chat .MessageList, .messages-container {
+  background: var(--color-background) !important;
+}
+.LeftColumn, .MiddleColumn { border-radius: 18px; }
+.MiddleHeader { border-radius: 18px 18px 0 0; }
+
+/* 氣泡 */
+.message-content, .Message .message-content, .last-in-group .message-content {
+  border-radius: 14px !important;
+}
+.message-list .Message .message-content { box-shadow: 0 1px 2px rgba(22,27,29,.08); }
+
+/* 氣泡外的底色透明,讓石板漸層露出來 */
+.Chat, .chat, .MessageList, .message-list { background: transparent !important; }
+
+/* 按鈕/輸入框圓角 */
+.Button, .Button--round, .form-control, .input-wrapper, .Composer .form-control {
+  border-radius: 12px !important;
+}
+.Composer { border-top: 1px solid var(--color-borders) !important; }
+
+/* 頭像圓角 */
+.Avatar { border-radius: 12px !important; }

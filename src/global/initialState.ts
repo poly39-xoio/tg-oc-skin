@@ -81,7 +81,7 @@ export const SHARED_STATE_CACHE_VERSION = 2;
 export const INITIAL_SHARED_STATE: SharedState = {
   cacheVersion: SHARED_STATE_CACHE_VERSION,
   settings: {
-    theme: 'dark',
+    theme: 'light',
     themes: {
       light: {
         isBlurred: true,
