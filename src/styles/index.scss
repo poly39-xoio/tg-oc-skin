@@ -865,3 +865,21 @@ body::before {
 [class*="MiddleColumn"], [class*="Chat"], [class*="MessageList"], [class*="messages-container"] {
   background: transparent !important;
 }
+
+/* ===== OC Pass skin v12: 對方(io)泡泡 = 輸入框同色 #E1EBF1;自己泡泡維持 #3F4A54 ===== */
+.Message:not(.own) [class*="message-content"],
+.Message:not(.own) [class*="message-content"]::before {
+  background: #E1EBF1 !important;
+  color: #161B1D !important;
+}
+.Message:not(.own) [class*="message-content"] * { color: #161B1D !important; }
+.Message.own [class*="message-content"], .Message.own [class*="message-content"]::before {
+  background: #3F4A54 !important; color: #FFFFFF !important;
+}
+.Message.own [class*="message-content"] * { color: #FFFFFF !important; }
+/* 輸入框:同一個淡霧藍,讓「我的泡泡 = 輸入框」 */
+[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"] {
+  background: #E1EBF1 !important; color: #161B1D !important; -webkit-text-fill-color: #161B1D !important;
+}
+/* 鍵盤:強制 light scheme(iOS 才會用亮色鍵盤) */
+html, body { color-scheme: light !important; }
