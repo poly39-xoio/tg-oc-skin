@@ -74,6 +74,21 @@ export function getIsMaskedPattern(isPattern?: boolean, patternIntensity?: numbe
 }
 
 export function buildWallpaperRenderModel(theme: ThemeKey, settings: IThemeSettings): WallpaperRenderModel {
+  // 2026-10-25 OC skin: 不論帳號存了什麼桌布,一律用 OC 石板漸層(否則會沿用 Telegram 黑底)
+  const OC_WALLPAPER_COLORS = ['#7C8D9A', '#6E7F8D', '#5C6B78'];
+  settings = {
+    ...settings,
+    background: undefined,
+    isPattern: undefined,
+    isBlurred: undefined,
+    patternColor: undefined,
+    patternIntensity: 0,
+    backgroundColor: OC_WALLPAPER_COLORS[0],
+    secondBackgroundColor: OC_WALLPAPER_COLORS[1],
+    thirdBackgroundColor: OC_WALLPAPER_COLORS[2],
+    fourthBackgroundColor: undefined,
+  };
+
   const {
     background: customBackground,
     backgroundColor,
