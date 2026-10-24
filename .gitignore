@@ -14,3 +14,6 @@ dev/perf/screenshot*
 node_modules/
 .env
 .cache/
+
+# 2026-10-25: build artifact, 94MB — 不進 git
+public/build-stats.json
