@@ -34,6 +34,33 @@ function schedule() {
   window.setTimeout(applyFixes, 1500);
 }
 
+
+/**
+ * Diagnostic snapshot of the top strip: which element actually paints the bar,
+ * with its class names and background. Read from the app via `window.__ocReport()`.
+ */
+function collectReport() {
+  const rows: string[] = [];
+  document.querySelectorAll<HTMLElement>('div, header, nav, section').forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.height < 20 || r.height > 160 || r.width < 150) return;
+    if (r.top > 150) return;
+    const cs = getComputedStyle(el);
+    const bg = cs.backgroundColor;
+    if (bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') return;
+    rows.push(`y${Math.round(r.top)} h${Math.round(r.height)} ${el.tagName}.${String(el.className).slice(0, 60)} bg=${bg}`);
+  });
+  return rows.slice(0, 20).join(' | ') || '(none)';
+}
+
+declare global {
+  interface Window { __ocReport?: () => string }
+}
+
+if (typeof window !== 'undefined') {
+  window.__ocReport = collectReport;
+}
+
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', schedule);
