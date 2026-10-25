@@ -226,3 +226,24 @@
   max-width: 20rem;
   max-height: calc(100 * var(--vh) - 3.75rem);
 }
+
+/* ===== OC skin: dark slate bar, white font-icons ===== */
+.LeftMainHeader,
+#LeftMainHeader {
+  background: #3F4A54 !important;
+
+  .Button,
+  .Button .icon,
+  .icon,
+  button {
+    color: #FFFFFF !important;
+    opacity: 1 !important;
+  }
+
+  .SearchInput input,
+  input {
+    background: #E1EBF1 !important;
+    color: #161B1D !important;
+    -webkit-text-fill-color: #161B1D !important;
+  }
+}
