@@ -39,7 +39,6 @@ import App from './components/App';
 
 import './assets/fonts/roboto.css';
 import './styles/index.scss';
-import './ocSkinRuntime';
 
 if (STRICTERDOM_ENABLED) {
   enableStrict();
