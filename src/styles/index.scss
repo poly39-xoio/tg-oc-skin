@@ -1047,3 +1047,23 @@ html body [class*="Avatar"], html body [class*="avatar"] {
 html body [class*="Avatar"] svg, html body [class*="avatar"] svg {
   border-radius: 12px !important;
 }
+
+/* ===== OC Pass skin v22: 左欄/聊天列表的頂部 bar 也是深石板(三點才看得見) ===== */
+html body .LeftMainHeader, html body [class*="LeftMainHeader"], html body [class*="LeftHeader"],
+html body [class*="left-header"], html body .LeftColumn > header, html body .LeftColumn header {
+  background: #3F4A54 !important;
+  --button-text-color: #FFFFFF;
+  --button-active-text-color: #FFFFFF;
+}
+html body [class*="LeftMainHeader"] .Button, html body [class*="LeftMainHeader"] button,
+html body [class*="LeftHeader"] .Button, html body [class*="LeftHeader"] button,
+html body [class*="LeftMainHeader"] svg, html body [class*="LeftHeader"] svg {
+  color: #FFFFFF !important; fill: #FFFFFF !important; opacity: 1 !important;
+}
+html body [class*="LeftMainHeader"] input, html body [class*="LeftHeader"] input {
+  background: #E1EBF1 !important; color: #161B1D !important;
+  -webkit-text-fill-color: #161B1D !important;
+}
+html body [class*="LeftMainHeader"] input::placeholder, html body [class*="LeftHeader"] input::placeholder {
+  color: #4D5761 !important; -webkit-text-fill-color: #4D5761 !important;
+}
