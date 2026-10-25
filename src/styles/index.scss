@@ -973,3 +973,37 @@ button[class*="menu"] svg, button[class*="Menu"] svg, [class*="MenuButton"] svg 
   padding-top: calc(env(safe-area-inset-top, 0px) + 3rem) !important;
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 2.5rem) !important;
 }
+
+/* ===== OC Pass skin v20: 變數層修正(不再硬壓元件樣式) ===== */
+/* 輸入列:圖示用主題變數,淡底 → 深墨 */
+html body .Composer, html body [class*="Composer"] {
+  --color-composer-button: #2C353C;
+  --button-text-color: #2C353C;
+  --button-active-text-color: #161B1D;
+}
+html body .Composer .Button, html body [class*="Composer"] .Button,
+html body .EmojiButton, html body .EmojiButton svg,
+html body [class*="Composer"] [class*="icon"] {
+  color: #2C353C !important; fill: #2C353C !important;
+}
+/* 標題列:深石板 + 白圖示,只作用在 bar 內 */
+html body .MiddleHeader, html body [class*="MiddleHeader"] {
+  background: #3F4A54 !important;
+  --button-text-color: #FFFFFF;
+  --button-active-text-color: #FFFFFF;
+}
+html body .MiddleHeader .Button, html body .MiddleHeader button,
+html body .MiddleHeader svg, html body .MiddleHeader [class*="icon"] svg {
+  color: #FFFFFF !important; fill: #FFFFFF !important;
+}
+/* 氣泡尾巴與頭像角標全部移除(會在圓角方形上留下尖角) */
+html body .svg-appendix, html body [class*="appendix"],
+html body [class*="avatar-badge"], html body [class*="avatar-community-chevron"] {
+  display: none !important;
+}
+/* 封存聊天:不要被全域 14px 圓角切成半圓 */
+html body [class*="Archived"] [class*="Avatar"], html body [class*="archived"] [class*="Avatar"],
+html body [class*="Avatar"] {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
