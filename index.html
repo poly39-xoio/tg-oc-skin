@@ -6,10 +6,10 @@
   <meta name="color-scheme" content="light">
 
   <title>
-    OC Pass · Telegram v18
+    OC Pass · Telegram v19
   </title>
 
-  <meta name="title" content="OC Pass · Telegram v18">
+  <meta name="title" content="OC Pass · Telegram v19">
   <meta name="oc-skin" content="v5">
   <meta name="description"
     content="Telegram is a cloud-based mobile and desktop messaging app with a focus on security and speed.">
@@ -102,6 +102,79 @@
     window.addEventListener('load', fix);
   })();
   </script>
+
+  <script>
+  /* OC skin v19: 執行期強制樣式(元件樣式在執行期注入,主樣式表壓不過) */
+  (function () {
+    function lum(r, g, b) { return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255; }
+    function parseLum(c) {
+      var m = /rgba?\((\d+)[, ]+(\d+)[, ]+(\d+)/.exec(c || '');
+      if (!m) return null;
+      if ((c || '').indexOf('rgba') === 0 && /,\s*0\s*\)/.test(c)) return null;
+      return lum(+m[1], +m[2], +m[3]);
+    }
+    function bgLum(el) {
+      var node = el;
+      for (var i = 0; i < 12 && node; i++) {
+        var cs = getComputedStyle(node);
+        var l = parseLum(cs.backgroundColor);
+        if (l !== null) return l;
+        if (cs.backgroundImage && cs.backgroundImage.indexOf('gradient') !== -1) return 0.55;
+        node = node.parentElement;
+      }
+      return 0.55;
+    }
+    function paintIcon(el, color) {
+      el.style.setProperty('color', color, 'important');
+      var kids = el.querySelectorAll('svg, path, use, i, span, div');
+      for (var i = 0; i < kids.length; i++) {
+        kids[i].style.setProperty('color', color, 'important');
+        kids[i].style.setProperty('fill', color, 'important');
+      }
+    }
+    function fix() {
+      /* 1) 標題列固定深石板 + 白色圖示 */
+      var headers = document.querySelectorAll('.MiddleHeader, [class*="MiddleHeader"]');
+      for (var h = 0; h < headers.length; h++) {
+        headers[h].style.setProperty('background', '#3F4A54', 'important');
+        headers[h].style.setProperty('background-color', '#3F4A54', 'important');
+      }
+      var hbtns = document.querySelectorAll('.MiddleHeader button, .MiddleHeader [class*="Button"], [class*="MiddleHeader"] button');
+      for (var b = 0; b < hbtns.length; b++) paintIcon(hbtns[b], '#FFFFFF');
+
+      /* 2) 輸入列的笑臉/附件:依背景亮度自動深/白 */
+      var cbtns = document.querySelectorAll('.EmojiButton, .EmojiButton svg, [class*="Composer"] [class*="attach"], [class*="Composer"] [class*="Attach"], [class*="Composer"] [class*="SymbolMenu"]');
+      for (var c = 0; c < cbtns.length; c++) {
+        var el = cbtns[c];
+        if (el.tagName === 'svg') continue;
+        paintIcon(el, bgLum(el) < 0.45 ? '#FFFFFF' : '#2C353C');
+      }
+
+      /* 3) 移除氣泡尾巴 */
+      var tails = document.querySelectorAll('.svg-appendix, [class*="appendix"]');
+      for (var t = 0; t < tails.length; t++) tails[t].style.setProperty('display', 'none', 'important');
+
+      /* 4) 確保列表可捲動 */
+      var list = document.querySelectorAll('.custom-scroll, [class*="scrollable"], [class*="LeftColumn"] [class*="list"]');
+      for (var l = 0; l < list.length; l++) {
+        var cs2 = getComputedStyle(list[l]);
+        if (cs2.overflowY === 'hidden' || cs2.overflowY === 'clip') {
+          list[l].style.setProperty('overflow-y', 'auto', 'important');
+        }
+        list[l].style.setProperty('-webkit-overflow-scrolling', 'touch', 'important');
+        list[l].style.setProperty('touch-action', 'pan-y', 'important');
+      }
+    }
+    var n = 0;
+    var t = setInterval(function () { fix(); if (++n > 120) clearInterval(t); }, 400);
+    document.addEventListener('DOMContentLoaded', fix);
+    window.addEventListener('load', fix);
+    try {
+      new MutationObserver(function () { fix(); }).observe(document.body, { childList: true, subtree: true });
+    } catch (e) {}
+  })();
+  </script>
+
 </body>
 
 </html>
