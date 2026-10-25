@@ -97,7 +97,7 @@ function collectReport() {
     const cs = getComputedStyle(el);
     const bg = cs.backgroundColor;
     if (bg === 'rgba(0, 0, 0, 0)' || bg === 'transparent') return;
-    rows.push(`y${Math.round(r.top)} h${Math.round(r.height)} ${el.tagName}.${String(el.className).slice(0, 50)} bg=${bg}`);
+    rows.push(`y${Math.round(r.top)} ${Math.round(r.width)}x${Math.round(r.height)} r=${cs.borderRadius} ${el.tagName}.${String(el.className).slice(0, 46)}`);
   });
   const avatars = Array.from(document.querySelectorAll<HTMLElement>('[class*="avatar"], [class*="Avatar"]'))
     .slice(0, 6)
