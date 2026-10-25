@@ -944,3 +944,32 @@ button[class*="menu"] svg, button[class*="Menu"] svg, [class*="MenuButton"] svg 
   color: #000000 !important; -webkit-text-fill-color: #000000 !important; caret-color: #000000 !important;
 }
 [class*="Composer"] textarea::placeholder { color: #3B454E !important; -webkit-text-fill-color: #3B454E !important; }
+
+/* ===== OC Pass skin v18: 去氣泡尾巴 / 圖示配色 / 登入頁可捲動 ===== */
+/* 1) 移除氣泡尾巴(左下/右下角的小尖角) */
+.svg-appendix, [class*="appendix"] { display: none !important; }
+.Message [class*="message-content"] { border-radius: 14px !important; }
+
+/* 2) 輸入列的笑臉/附件:淡底上用深墨色,原本白色看不見 */
+.EmojiButton, .EmojiButton svg, .EmojiButton img,
+[class*="Composer"] [class*="attach"], [class*="Composer"] [class*="Attach"],
+[class*="Composer"] [class*="SymbolMenu"], [class*="Composer"] [class*="symbol-menu"] {
+  color: #2C353C !important; fill: #2C353C !important; stroke: currentColor !important;
+  opacity: 1 !important;
+}
+.EmojiButton { opacity: 1 !important; filter: none !important; }
+
+/* 3) 右上角三點:深底 bar 上要純白,並放大可點區 */
+.MiddleHeader button, .MiddleHeader [class*="Button"],
+.MiddleHeader button svg, .MiddleHeader [class*="icon"] svg {
+  color: #FFFFFF !important; fill: #FFFFFF !important; stroke: none !important;
+  opacity: 1 !important;
+}
+.MiddleHeader button { min-width: 2.75rem !important; min-height: 2.75rem !important; }
+
+/* 4) 登入/入口頁要能捲動(小螢幕或鍵盤彈出時內容不被切掉) */
+.Auth { overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; }
+.Auth .auth-form {
+  padding-top: calc(env(safe-area-inset-top, 0px) + 3rem) !important;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 2.5rem) !important;
+}
