@@ -587,486 +587,70 @@ body:not(.is-ios) {
   --color-chat-username: rgb(233, 238, 244);
 }
 
-/* ===== OC skin (io / 2026-10-25) ===== */
-@font-face {
-  font-family: 'Huninn';
-  src: url('/fonts/Huninn.ttf') format('truetype');
-  font-display: swap;
-}
-
+/* ===== OC skin — single clean layer (v26, 2026-10-25) =====
+   One coherent block replaces the previous v2..v25 stack: those layers kept
+   overriding each other and some selectors were far too broad (a [class*="avatar"]
+   rule also hit the 62x54 avatar wrapper and cropped it into a half circle). */
 :root {
-  --font-family: 'Campton', 'Avenir Next', 'Montserrat', 'Huninn', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-family-rounded: 'Campton', 'Avenir Next', 'Montserrat', 'Huninn', system-ui, sans-serif;
-
-  --border-radius-list-item: 0.875rem;
-  --border-radius-button: 0.75rem;
-  --border-radius-button-tiny: 0.625rem;
-  --border-radius-menu: 0.875rem;
-  --border-radius-modal: 1.25rem;
-  --border-radius-toast: 0.75rem;
+  --oc-bar: #3F4A54;
+  --oc-own: #3F4A54;
+  --oc-in: #E1EBF1;
+  --oc-ink: #161B1D;
+  --oc-radius: 14px;
+  color-scheme: light;
 }
 
-/* ===== OC Pass skin v2 (io 2026-10-25): 石板漸層 + 淡面板 + 14px 氣泡 ===== */
-html, body { background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%) !important; background-attachment: fixed !important; }
-#root, .App, .whole-app { background: transparent !important; }
-
-/* 主要面板(左欄/聊天區/標題列/輸入列) */
-.LeftColumn, .MiddleColumn, .RightColumn,
-.MiddleHeader, .Composer, .chat .MessageList, .messages-container {
-  background: var(--color-background) !important;
-}
-.LeftColumn, .MiddleColumn { border-radius: 18px; }
-.MiddleHeader { border-radius: 18px 18px 0 0; }
-
-/* 氣泡 */
-.message-content, .Message .message-content, .last-in-group .message-content {
-  border-radius: 14px !important;
-}
-.message-list .Message .message-content { box-shadow: 0 1px 2px rgba(22,27,29,.08); }
-
-/* 氣泡外的底色透明,讓石板漸層露出來 */
-.Chat, .chat, .MessageList, .message-list { background: transparent !important; }
-
-/* 按鈕/輸入框圓角 */
-.Button, .Button--round, .form-control, .input-wrapper, .Composer .form-control {
-  border-radius: 12px !important;
-}
-.Composer { border-top: 1px solid var(--color-borders) !important; }
-
-/* 頭像圓角 */
-.Avatar { border-radius: 12px !important; }
-
-/* ===== OC Pass skin v3: 讓漸層真正露出來 + 字體覆蓋 ===== */
-:root, body, .theme-light, .theme-dark {
-  --font-family: 'Campton', 'Avenir Next', 'Montserrat', 'Huninn', system-ui, sans-serif !important;
-  --font-family-rounded: 'Campton', 'Avenir Next', 'Montserrat', 'Huninn', system-ui, sans-serif !important;
-}
-html { background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%) !important; background-attachment: fixed !important; }
-body { background: transparent !important; font-family: var(--font-family) !important; }
-#root, #root > div, .App, .whole-app, .AppWrapper { background: transparent !important; }
-.theme-light body, .theme-dark body { background: transparent !important; }
-
-/* ===== OC Pass skin v4: 強制覆蓋(含登入後帳號主題/桌布/鍵盤) ===== */
-html, body, .theme-light, .theme-dark, .theme-light body, .theme-dark body {
-  --color-background: #E1EBF1 !important;
-  --color-background-secondary: #D6E0E7 !important;
-  --color-background-sidebar: #CED9E1 !important;
-  --color-background-secondary-accent: #CED9E1 !important;
-  --color-background-own: #CED9E1 !important;
-  --color-background-own-apple: #CED9E1 !important;
-  --color-background-selected: #D6E0E7 !important;
-  --color-background-own-selected: #C3D4DE !important;
-  --color-text: #161B1D !important;
-  --color-text-secondary: #3B454E !important;
-  --color-icon-secondary: #4D5761 !important;
-  --color-borders: #C3D2DC !important;
-  --color-borders-input: #C3D2DC !important;
-  --color-dividers: #BCCCD6 !important;
-  --color-primary: #3F4A54 !important;
-  --color-primary-shade: #4A5560 !important;
-  --color-links: #2F3B45 !important;
-  --color-chat-active: #3F4A54 !important;
-  --color-composer-button: #3F4A54 !important;
-  --color-accent-own: #3F4A54 !important;
-  --color-message-meta-own: #4D5761FF !important;
-  --color-reply-own-hover: #C3D4DE !important;
-  --color-reply-own-active: #B7CBD7 !important;
-  --color-message-reaction: #D6E0E7 !important;
-  --color-message-reaction-own: #C3D4DE !important;
+html, body {
+  background: linear-gradient(180deg, #8A9BA8 0%, #7C8D9A 45%, #6B7A87 100%) !important;
   color-scheme: light !important;
 }
+#root, .App, .whole-app { background: transparent !important; }
 
-/* 標題列 / 輸入列 / 列表:一律淡面板 + 細邊 */
-.MiddleHeader, .Composer, .LeftColumn, .MiddleColumn, .RightColumn,
-.MiddleHeader::before, .MiddleHeader::after {
-  background: var(--color-background) !important;
-  color: var(--color-text) !important;
-}
-.Composer { border-top: 1px solid var(--color-borders) !important; }
-
-/* 聊天桌布:蓋掉任何圖片/漸層/canvas 預設 */
-.Wallpaper, .Wallpaper .background, .Wallpaper .gradient, .Wallpaper canvas,
-.chat-background, .ChatBackground, #middle-column .Wallpaper {
-  background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%) !important;
-  background-image: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%) !important;
-}
-.Wallpaper canvas { display: none !important; }
-
-/* 氣泡:自己=淡霧藍、對方=更淡一階,文字墨黑 */
-.message-content { background: var(--color-background) !important; color: var(--color-text) !important; border-radius: 14px !important; }
-.Message.own .message-content, .message-content.own, .last-in-group.own .message-content {
-  background: var(--color-background-own) !important; color: var(--color-text) !important;
-}
-.Message .message-content .text-content, .Message .message-content .message-text { color: var(--color-text) !important; }
-
-/* 輸入框/鈕 */
-.form-control, .input-wrapper, .MessageInput { background: var(--color-background-secondary) !important; color: var(--color-text) !important; border-radius: 14px !important; }
-.Button--round, .Composer .Button--round { background: var(--color-primary) !important; color: #fff !important; }
-
-/* ===== OC Pass skin v5: 完全對齊 OC Pass ChatView =====
-   依據 openclaw-remote-app/Sources/Views/ChatView.swift:
-   - header / inputBar 底 = Theme.accent #3F4A54,圖示白
-   - 自己氣泡 = Theme.accent #3F4A54 + 白字
-   - 對方氣泡 = Theme.panel  #E1EBF1 + 墨字
-   - 頁面底 = slate 漸層 #7C8D9A → #6E7F8D → #5C6B78
-*/
-html { background: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) fixed !important; }
-body, #root, .App, .whole-app { background: transparent !important; }
-
-/* 頂部標題列 = 深石板 + 白字 */
-.MiddleHeader, .MiddleHeader::before, .MiddleHeader::after { background: #3F4A54 !important; border-bottom: 1px solid rgba(255,255,255,.10) !important; }
-.MiddleHeader, .MiddleHeader * { color: #FFFFFF !important; }
-.MiddleHeader .icon, .MiddleHeader svg, .MiddleHeader .Button { color: #FFFFFF !important; fill: currentColor; }
-
-/* 底部輸入列 = 深石板;輸入框 = 淡霧藍 */
-.Composer, .Composer::before { background: #3F4A54 !important; border-top: none !important; }
-.Composer .icon, .Composer svg, .Composer .Button { color: #FFFFFF !important; }
-.Composer .form-control, .Composer .message-input-wrapper, .Composer .input-wrapper {
-  background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important;
-}
-.Composer .form-control::placeholder { color: #4D5761 !important; }
-
-/* 聊天底:石板漸層(壓掉所有桌布/canvas) */
-.Wallpaper, .Wallpaper > div, .Wallpaper canvas, .chat-background, .ChatBackground,
-#middle-column .Wallpaper, .MiddleColumn .Wallpaper {
-  background: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) !important;
-  background-image: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) !important;
-}
-.Wallpaper canvas, .Wallpaper img { display: none !important; }
-
-/* 氣泡:自己=深石板白字、對方=淡霧藍墨字 */
-.message-content { border-radius: 14px !important; }
-.Message .message-content { background: #E1EBF1 !important; color: #161B1D !important; box-shadow: 0 1px 2px rgba(22,27,29,.10) !important; }
-.Message .message-content .text-content, .Message .message-content .message-text,
-.Message .message-content a { color: #161B1D !important; }
-
-.Message.own .message-content, .Message.own .message-content::before,
-.Message.own .message-content .text-content, .Message.own .message-content .message-text,
-.Message.own .message-content a {
-  background: #3F4A54 !important; color: #FFFFFF !important;
-}
-.Message.own .message-content .message-meta, .Message.own .message-content .time { color: rgba(255,255,255,.72) !important; }
-
-/* 列表/側欄 */
-.LeftColumn, .MiddleColumn, .RightColumn { background: #E1EBF1 !important; }
-.LeftColumn .ListItem, .chat-item { border-radius: 12px !important; }
-
-/* ===== OC Pass skin v6: 用「屬性選擇器」命中 CSS Modules 的雜湊類名 ===== */
-html { background: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) fixed !important; }
-body, #root, #root > div, [class*="App"], [class*="whole-app"] { background: transparent !important; }
-
-/* 頂部/底部:深石板 + 白字(OC Pass 的 accent) */
-[class*="MiddleHeader"], [class*="Composer"] {
-  background: #3F4A54 !important;
+/* ---- top bars: dark slate with white controls ---- */
+.LeftMainHeader, .left-header, .MiddleHeader {
+  background: var(--oc-bar) !important;
   color: #FFFFFF !important;
-  border-color: rgba(255,255,255,.12) !important;
 }
-[class*="MiddleHeader"] svg, [class*="Composer"] svg { fill: currentColor !important; }
-
-/* 輸入框:淡霧藍 + 墨字 */
-[class*="Composer"] [class*="form-control"],
-[class*="Composer"] [class*="message-input-wrapper"],
-[class*="Composer"] textarea, [class*="Composer"] input {
-  background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important;
-}
-[class*="Composer"] textarea::placeholder { color: #4D5761 !important; }
-
-/* 聊天底:石板漸層;壓掉桌布 canvas/圖片 */
-[class*="Wallpaper"], [class*="chat-background"], [class*="ChatBackground"] {
-  background: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) !important;
-  background-image: linear-gradient(180deg,#7C8D9A 0%,#6E7F8D 55%,#5C6B78 100%) !important;
-}
-[class*="Wallpaper"] canvas, [class*="Wallpaper"] img { display: none !important; }
-
-/* 氣泡:對方=淡霧藍墨字;自己=深石板白字 */
-[class*="message-content"] { border-radius: 14px !important; }
-[class*="message-content"] { background: #E1EBF1 !important; color: #161B1D !important; }
-.Message.own [class*="message-content"], .own [class*="message-content"],
-[class*="Message"][class*="own"] [class*="message-content"] {
-  background: #3F4A54 !important; color: #FFFFFF !important;
-}
-.Message.own [class*="text-content"], .own [class*="text-content"],
-.Message.own [class*="message-text"], .own [class*="message-text"] { color: #FFFFFF !important; }
-[class*="message-content"] [class*="text-content"],
-[class*="message-content"] [class*="message-text"] { color: #161B1D !important; }
-.Message.own [class*="message-meta"], .own [class*="message-meta"] { color: rgba(255,255,255,.72) !important; }
-
-/* 左欄/清單 */
-[class*="LeftColumn"], [class*="MiddleColumn"] { background: #E1EBF1 !important; }
-
-/* ===== OC Pass skin v7: 修掉 v6 過寬選擇器(對方氣泡被誤蓋) + 背景改用固定漸層層 ===== */
-/* 背景:直接鋪一層固定漸層在最底,並把 Telegram 桌布層隱藏 */
-html { background: #6E7F8D !important; }
-body::before {
-  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, #7C8D9A 0%, #6E7F8D 55%, #5C6B78 100%);
-}
-body, #root, #root > div { background: transparent !important; }
-[class*="Wallpaper"], [class*="chat-background"], [class*="ChatBackground"] { opacity: 0 !important; }
-
-/* 氣泡:只有「精確的 .Message.own」才是深色;其餘一律淡霧藍墨字 */
-[class*="message-content"] { background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important; }
-[class*="message-content"] [class*="text-content"],
-[class*="message-content"] [class*="message-text"],
-[class*="message-content"] a { color: #161B1D !important; }
-
-.Message.own [class*="message-content"] { background: #3F4A54 !important; color: #FFFFFF !important; }
-.Message.own [class*="text-content"], .Message.own [class*="message-text"],
-.Message.own [class*="message-content"] a { color: #FFFFFF !important; }
-.Message.own [class*="message-meta"], .Message.own time { color: rgba(255,255,255,.72) !important; }
-
-/* 上下:深石板 + 白字 */
-[class*="MiddleHeader"], [class*="Composer"] { background: #3F4A54 !important; color: #fff !important; }
-[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [class*="form-control"] {
-  background: #E1EBF1 !important; color: #161B1D !important; border-radius: 14px !important;
-}
-
-/* ===== OC Pass skin v8: 修輸入框白字看不見 + 只讓圖示白 ===== */
-[class*="MiddleHeader"], [class*="Composer"] { background: #3F4A54 !important; }
-/* 只有圖示/按鈕白,不要把輸入文字一起蓋白 */
-[class*="Composer"] svg, [class*="Composer"] button, [class*="Composer"] [class*="icon"] {
-  color: #FFFFFF !important; fill: currentColor !important;
-}
-[class*="Composer"] textarea, [class*="Composer"] input,
-[class*="Composer"] [contenteditable="true"], [class*="Composer"] [class*="form-control"] {
-  background: #E1EBF1 !important;
-  color: #161B1D !important;
-  -webkit-text-fill-color: #161B1D !important;
-  caret-color: #161B1D !important;
-  border-radius: 14px !important;
-}
-[class*="Composer"] textarea::placeholder,
-[class*="Composer"] [contenteditable="true"]::before { color: #4D5761 !important; -webkit-text-fill-color: #4D5761 !important; }
-
-/* ===== OC Pass skin v9: 把「上下」規則縮回真正的 bar,避免整頁被塗成深石板 ===== */
-.MiddleHeader, .Composer { background: #3F4A54 !important; }
-.MiddleHeader * { color: #FFFFFF !important; }
-[class*="Composer"] svg, [class*="Composer"] button, [class*="Composer"] [class*="icon"] { color: #FFFFFF !important; fill: currentColor !important; }
-[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"] {
-  background: #E1EBF1 !important; color: #161B1D !important; -webkit-text-fill-color: #161B1D !important; caret-color: #161B1D !important;
-}
-
-/* ===== OC Pass skin v11: 背景=中間石板漸層(比 own 泡泡淺、比對方泡泡深) ===== */
-/* 不再把整個 Composer 容器塗深,只留標題列 */
-.Composer { background: transparent !important; }
-[class*="Composer"] { background-color: transparent !important; }
-[class*="Composer"] [class*="form-control"], [class*="Composer"] textarea, [class*="Composer"] input {
-  background: #E1EBF1 !important; color: #161B1D !important; -webkit-text-fill-color: #161B1D !important;
-}
-/* 中間色背景:比 #3F4A54 淺、比 #E1EBF1 深 */
-html, body { background: linear-gradient(180deg, #8A9BA8 0%, #7C8D9A 45%, #6B7A87 100%) !important; }
-body::before {
-  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, #8A9BA8 0%, #7C8D9A 45%, #6B7A87 100%) !important;
-}
-[class*="MiddleColumn"], [class*="Chat"], [class*="MessageList"], [class*="messages-container"] {
-  background: transparent !important;
-}
-
-/* ===== OC Pass skin v12: 對方(io)泡泡 = 輸入框同色 #E1EBF1;自己泡泡維持 #3F4A54 ===== */
-.Message:not(.own) [class*="message-content"],
-.Message:not(.own) [class*="message-content"]::before {
-  background: #E1EBF1 !important;
-  color: #161B1D !important;
-}
-.Message:not(.own) [class*="message-content"] * { color: #161B1D !important; }
-.Message.own [class*="message-content"], .Message.own [class*="message-content"]::before {
-  background: #3F4A54 !important; color: #FFFFFF !important;
-}
-.Message.own [class*="message-content"] * { color: #FFFFFF !important; }
-/* 輸入框:同一個淡霧藍,讓「我的泡泡 = 輸入框」 */
-[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"] {
-  background: #E1EBF1 !important; color: #161B1D !important; -webkit-text-fill-color: #161B1D !important;
-}
-/* 鍵盤:強制 light scheme(iOS 才會用亮色鍵盤) */
-html, body { color-scheme: light !important; }
-
-/* ===== OC Pass skin v13: 強制整站 light scheme(iOS 鍵盤/表單控制項) ===== */
-:root { color-scheme: light !important; }
-html, body { color-scheme: light !important; }
-
-/* ===== OC Pass skin v14: 全部改方框(膠囊→方框、圓形→方形) ===== */
-*, *::before, *::after {
-  border-radius: 0 !important;
-}
-/* 保險:以百分比/超大數值做的圓形與膠囊也一併歸零 */
-[class*="Avatar"], [class*="avatar"], [class*="round"], [class*="Round"],
-[class*="pill"], [class*="Pill"], [class*="chip"], [class*="Chip"],
-[class*="Badge"], [class*="badge"], [class*="Tag"], [class*="tag"] {
-  border-radius: 0 !important;
-}
-
-/* ===== OC Pass skin v15: 不是直角,是「像泡泡一樣的圓角方形」 ===== */
-*, *::before, *::after { border-radius: 14px !important; }
-[class], [class]::before, [class]::after { border-radius: 14px !important; }
-/* 小元件(點、指示燈、勾選)維持接近圓形,不要被 14px 撐成怪形 */
-[class*="dot"], [class*="Dot"], [class*="indicator"], [class*="Indicator"],
-[class*="status"], [class*="Status"], [class*="online"], [class*="Online"] {
-  border-radius: 50% !important;
-}
-/* 氣泡/輸入框沿用 14px */
-[class*="message-content"], [class*="Composer"] textarea, [class*="Composer"] input,
-[class*="Composer"] [contenteditable="true"] { border-radius: 14px !important; }
-
-/* ===== OC Pass skin v16: 選單/輸入框文字可見性(移除先前「所有子元素白字」的規則) ===== */
-[class*="Menu"], [class*="menu"], [class*="Dropdown"], [class*="dropdown"],
-[class*="Popup"], [class*="popup"], [class*="Modal"], [class*="modal"] {
-  background: #E1EBF1 !important; color: #161B1D !important;
-}
-[class*="Menu"] *, [class*="Dropdown"] *, [class*="Popup"] *, [class*="Modal"] * {
-  color: #161B1D !important; -webkit-text-fill-color: #161B1D !important;
-}
-[class*="MenuItem"]:hover, [class*="menu-item"]:hover { background: #D6E0E7 !important; }
-
-/* 輸入框:淡底墨字 */
-[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"],
-[class*="form-control"] {
-  background: #E1EBF1 !important; color: #161B1D !important;
-  -webkit-text-fill-color: #161B1D !important; caret-color: #161B1D !important;
-}
-[class*="Composer"] textarea::placeholder { color: #4D5761 !important; -webkit-text-fill-color: #4D5761 !important; }
-
-/* 標題列:只有 bar 本身與圖示白 */
-.MiddleHeader, [class*="MiddleHeader"] { color: #FFFFFF !important; }
-[class*="MiddleHeader"] svg { color: #FFFFFF !important; fill: currentColor !important; }
-
-/* ===== OC Pass skin v17: 三點選單可見、選單字加大、輸入字更深 ===== */
-button[class*="menu"], button[class*="Menu"], [class*="MenuButton"], [class*="menu-button"],
-[class*="btn-menu"], [class*="MenuBtn"] {
-  background: transparent !important; color: #FFFFFF !important;
-}
-button[class*="menu"] svg, button[class*="Menu"] svg, [class*="MenuButton"] svg { color:#FFFFFF !important; fill:#FFFFFF !important; }
-[class*="MenuItem"], [class*="menu-item"], [class*="Menu"] li, [class*="Dropdown"] li {
-  font-size: 15px !important; line-height: 1.5 !important;
-}
-[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"],
-[class*="form-control"] {
-  color: #000000 !important; -webkit-text-fill-color: #000000 !important; caret-color: #000000 !important;
-}
-[class*="Composer"] textarea::placeholder { color: #3B454E !important; -webkit-text-fill-color: #3B454E !important; }
-
-/* ===== OC Pass skin v18: 去氣泡尾巴 / 圖示配色 / 登入頁可捲動 ===== */
-/* 1) 移除氣泡尾巴(左下/右下角的小尖角) */
-.svg-appendix, [class*="appendix"] { display: none !important; }
-.Message [class*="message-content"] { border-radius: 14px !important; }
-
-/* 2) 輸入列的笑臉/附件:淡底上用深墨色,原本白色看不見 */
-.EmojiButton, .EmojiButton svg, .EmojiButton img,
-[class*="Composer"] [class*="attach"], [class*="Composer"] [class*="Attach"],
-[class*="Composer"] [class*="SymbolMenu"], [class*="Composer"] [class*="symbol-menu"] {
-  color: #2C353C !important; fill: #2C353C !important; stroke: currentColor !important;
-  opacity: 1 !important;
-}
-.EmojiButton { opacity: 1 !important; filter: none !important; }
-
-/* 3) 右上角三點:深底 bar 上要純白,並放大可點區 */
-.MiddleHeader button, .MiddleHeader [class*="Button"],
-.MiddleHeader button svg, .MiddleHeader [class*="icon"] svg {
-  color: #FFFFFF !important; fill: #FFFFFF !important; stroke: none !important;
-  opacity: 1 !important;
-}
-.MiddleHeader button { min-width: 2.75rem !important; min-height: 2.75rem !important; }
-
-/* 4) 登入/入口頁要能捲動(小螢幕或鍵盤彈出時內容不被切掉) */
-.Auth { overflow-y: auto !important; -webkit-overflow-scrolling: touch !important; }
-.Auth .auth-form {
-  padding-top: calc(env(safe-area-inset-top, 0px) + 3rem) !important;
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 2.5rem) !important;
-}
-
-/* ===== OC Pass skin v20: 變數層修正(不再硬壓元件樣式) ===== */
-/* 輸入列:圖示用主題變數,淡底 → 深墨 */
-html body .Composer, html body [class*="Composer"] {
-  --color-composer-button: #2C353C;
-  --button-text-color: #2C353C;
-  --button-active-text-color: #161B1D;
-}
-html body .Composer .Button, html body [class*="Composer"] .Button,
-html body .EmojiButton, html body .EmojiButton svg,
-html body [class*="Composer"] [class*="icon"] {
-  color: #2C353C !important; fill: #2C353C !important;
-}
-/* 標題列:深石板 + 白圖示,只作用在 bar 內 */
-html body .MiddleHeader, html body [class*="MiddleHeader"] {
-  background: #3F4A54 !important;
-  --button-text-color: #FFFFFF;
-  --button-active-text-color: #FFFFFF;
-}
-html body .MiddleHeader .Button, html body .MiddleHeader button,
-html body .MiddleHeader svg, html body .MiddleHeader [class*="icon"] svg {
-  color: #FFFFFF !important; fill: #FFFFFF !important;
-}
-/* 氣泡尾巴與頭像角標全部移除(會在圓角方形上留下尖角) */
-html body .svg-appendix, html body [class*="appendix"],
-html body [class*="avatar-badge"], html body [class*="avatar-community-chevron"] {
-  display: none !important;
-}
-/* 封存聊天:不要被全域 14px 圓角切成半圓 */
-html body [class*="Archived"] [class*="Avatar"], html body [class*="archived"] [class*="Avatar"],
-html body [class*="Avatar"] {
-  border-radius: 12px !important;
-  overflow: hidden !important;
-}
-
-/* ===== OC Pass skin v21: 只修笑臉,送出/選單還原白圖示;標題列按鈕加底片 ===== */
-/* 取消 v20 對整個 Composer 按鈕的深色覆寫(會把送出/選單一起變黑) */
-html body .Composer, html body [class*="Composer"] {
-  --button-text-color: #FFFFFF;
-  --button-active-text-color: #FFFFFF;
-  --color-composer-button: #2C353C;
-}
-/* 只有笑臉與附件維持深墨 */
-html body .EmojiButton, html body .EmojiButton svg,
-html body .EmojiButton img {
-  color: #2C353C !important; fill: #2C353C !important;
-}
-/* 送出/選單/麥克風:白圖示 */
-html body [class*="Composer"] .Button svg,
-html body [class*="Composer"] button[class*="send"] svg,
-html body [class*="Composer"] [class*="send"] svg {
-  color: #FFFFFF !important; fill: #FFFFFF !important;
-}
-/* 標題列三點:白圖示 + 淡白底片,確保在任何底色上都看得見 */
-html body .MiddleHeader .Button, html body [class*="MiddleHeader"] .Button,
-html body .MiddleHeader button {
-  background: rgba(255, 255, 255, 0.16) !important;
+.LeftMainHeader .Button, .left-header .Button, .MiddleHeader .Button,
+.LeftMainHeader button, .left-header button, .MiddleHeader button {
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.14) !important;
   border-radius: 10px !important;
-  opacity: 1 !important;
+}
+.LeftMainHeader svg, .left-header svg, .MiddleHeader svg {
   color: #FFFFFF !important;
+  fill: #FFFFFF !important;
 }
-html body .MiddleHeader .Button svg, html body [class*="MiddleHeader"] .Button svg,
-html body .MiddleHeader button svg {
-  color: #FFFFFF !important; fill: #FFFFFF !important; opacity: 1 !important;
-}
-/* 我的收藏/封存:頭像與內部圖示都是圓角方形,不要被切成半圓 */
-html body [class*="Avatar"], html body [class*="avatar"] {
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  clip-path: none !important;
-}
-html body [class*="Avatar"] svg, html body [class*="avatar"] svg {
-  border-radius: 12px !important;
+.LeftMainHeader input, .left-header input {
+  background: var(--oc-in) !important;
+  color: var(--oc-ink) !important;
+  -webkit-text-fill-color: var(--oc-ink) !important;
 }
 
-/* ===== OC Pass skin v22: 左欄/聊天列表的頂部 bar 也是深石板(三點才看得見) ===== */
-html body .LeftMainHeader, html body [class*="LeftMainHeader"], html body [class*="LeftHeader"],
-html body [class*="left-header"], html body .LeftColumn > header, html body .LeftColumn header {
-  background: #3F4A54 !important;
-  --button-text-color: #FFFFFF;
-  --button-active-text-color: #FFFFFF;
+/* ---- messages: no tails, 14px rounded squares ---- */
+[class*="message-content"] {
+  background: var(--oc-in) !important;
+  color: var(--oc-ink) !important;
+  border-radius: var(--oc-radius) !important;
 }
-html body [class*="LeftMainHeader"] .Button, html body [class*="LeftMainHeader"] button,
-html body [class*="LeftHeader"] .Button, html body [class*="LeftHeader"] button,
-html body [class*="LeftMainHeader"] svg, html body [class*="LeftHeader"] svg {
-  color: #FFFFFF !important; fill: #FFFFFF !important; opacity: 1 !important;
-}
-html body [class*="LeftMainHeader"] input, html body [class*="LeftHeader"] input {
-  background: #E1EBF1 !important; color: #161B1D !important;
-  -webkit-text-fill-color: #161B1D !important;
-}
-html body [class*="LeftMainHeader"] input::placeholder, html body [class*="LeftHeader"] input::placeholder {
-  color: #4D5761 !important; -webkit-text-fill-color: #4D5761 !important;
-}
+[class*="message-content"] * { color: var(--oc-ink) !important; }
+.Message.own [class*="message-content"] { background: var(--oc-own) !important; }
+.Message.own [class*="message-content"] * { color: #FFFFFF !important; }
+.svg-appendix { display: none !important; }
 
-/* skin build marker: readable from JS so the app can prove which CSS it loaded */
-:root { --oc-skin-version: "23"; }
+/* ---- avatars: round only the box; never the icon or the wrapper ---- */
+.Avatar { border-radius: 12px !important; overflow: hidden !important; }
+.avatar-wrapper { border-radius: 0 !important; overflow: visible !important; }
+.Avatar__icon { border-radius: 0 !important; overflow: visible !important; }
+
+/* ---- composer: the emoji stays dark on the light input, everything else default ---- */
+.EmojiButton, .EmojiButton svg, .EmojiButton img {
+  color: #2C353C !important;
+  fill: #2C353C !important;
+}
+[class*="Composer"] textarea, [class*="Composer"] input, [class*="Composer"] [contenteditable="true"] {
+  background: var(--oc-in) !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  border-radius: var(--oc-radius) !important;
+}
