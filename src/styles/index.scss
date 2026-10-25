@@ -654,3 +654,31 @@ html, body {
   -webkit-text-fill-color: #000000 !important;
   border-radius: var(--oc-radius) !important;
 }
+
+/* ===== v28: capsules (pill) -> rounded rectangles ===== */
+:root {
+  --border-radius-button: 12px;
+  --border-radius-button-tiny: 10px;
+  --border-radius-island: 12px;
+  --border-radius-toast: 12px;
+  --border-radius-menu: 12px;
+  --border-radius-list-item: 12px;
+  --border-radius-default: 12px;
+  --border-radius-modal: 16px;
+}
+
+/* search field, filters, chips and any explicitly pill-shaped control */
+.SearchInput,
+.SearchInput input,
+[class*="SearchInput"],
+[class*="search-input"] {
+  border-radius: 12px !important;
+}
+.Button:not(.round),
+[class*="Badge"],
+[class*="Chip"],
+[class*="pill"],
+[class*="Pill"],
+[class*="Tab"] {
+  border-radius: 12px !important;
+}
