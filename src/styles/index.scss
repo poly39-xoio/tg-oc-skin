@@ -1007,3 +1007,43 @@ html body [class*="Avatar"] {
   border-radius: 12px !important;
   overflow: hidden !important;
 }
+
+/* ===== OC Pass skin v21: 只修笑臉,送出/選單還原白圖示;標題列按鈕加底片 ===== */
+/* 取消 v20 對整個 Composer 按鈕的深色覆寫(會把送出/選單一起變黑) */
+html body .Composer, html body [class*="Composer"] {
+  --button-text-color: #FFFFFF;
+  --button-active-text-color: #FFFFFF;
+  --color-composer-button: #2C353C;
+}
+/* 只有笑臉與附件維持深墨 */
+html body .EmojiButton, html body .EmojiButton svg,
+html body .EmojiButton img {
+  color: #2C353C !important; fill: #2C353C !important;
+}
+/* 送出/選單/麥克風:白圖示 */
+html body [class*="Composer"] .Button svg,
+html body [class*="Composer"] button[class*="send"] svg,
+html body [class*="Composer"] [class*="send"] svg {
+  color: #FFFFFF !important; fill: #FFFFFF !important;
+}
+/* 標題列三點:白圖示 + 淡白底片,確保在任何底色上都看得見 */
+html body .MiddleHeader .Button, html body [class*="MiddleHeader"] .Button,
+html body .MiddleHeader button {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-radius: 10px !important;
+  opacity: 1 !important;
+  color: #FFFFFF !important;
+}
+html body .MiddleHeader .Button svg, html body [class*="MiddleHeader"] .Button svg,
+html body .MiddleHeader button svg {
+  color: #FFFFFF !important; fill: #FFFFFF !important; opacity: 1 !important;
+}
+/* 我的收藏/封存:頭像與內部圖示都是圓角方形,不要被切成半圓 */
+html body [class*="Avatar"], html body [class*="avatar"] {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  clip-path: none !important;
+}
+html body [class*="Avatar"] svg, html body [class*="avatar"] svg {
+  border-radius: 12px !important;
+}
