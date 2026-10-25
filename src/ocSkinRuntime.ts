@@ -24,27 +24,36 @@ function paintDescendants(el: Element, color: string) {
 
 /** Top strip: keep the bar dark and every icon white, whatever the module CSS says. */
 function fixTopBars() {
-  document.querySelectorAll<HTMLElement>('.LeftMainHeader, .left-header, .MiddleHeader, .MiddleHeader *').forEach((el) => {
-    if (!el.classList.contains('LeftMainHeader') && !el.classList.contains('left-header')
-        && !el.classList.contains('MiddleHeader')) return;
-    setImportant(el, 'background-color', BAR_COLOR);
-  });
-
-  document.querySelectorAll<HTMLElement>('button, [class*="Button"]').forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top > 150 || rect.height === 0 || rect.width === 0) return;
-    setImportant(el, 'color', ICON_COLOR_LIGHT);
-    paintDescendants(el, ICON_COLOR_LIGHT);
+  const bars = document.querySelectorAll<HTMLElement>('.LeftMainHeader, .left-header, .MiddleHeader');
+  bars.forEach((bar) => {
+    setImportant(bar, 'background-color', BAR_COLOR);
+    // Whiten every descendant rather than guessing tags: the "more" control is a
+    // plain div/anchor in some builds, so a button-only rule missed it entirely.
+    bar.querySelectorAll<HTMLElement>('*').forEach((el) => {
+      const tag = el.tagName.toLowerCase();
+      if (tag === 'input' || tag === 'textarea') return;
+      el.style.setProperty('color', ICON_COLOR_LIGHT, 'important');
+      if (tag === 'svg' || tag === 'path' || tag === 'use' || tag === 'g') {
+        el.style.setProperty('fill', ICON_COLOR_LIGHT, 'important');
+      }
+    });
   });
 }
 
-/** Avatars: square-ish with the same radius on every layer, never clipped to a半圓. */
+/**
+ * Avatars: only the avatar box itself. Never touch `Avatar__icon` — rounding and
+ * clipping the icon inside is what made it look like a half circle.
+ */
 function fixAvatars() {
-  document.querySelectorAll<HTMLElement>('[class*="avatar"], [class*="Avatar"]').forEach((el) => {
+  document.querySelectorAll<HTMLElement>('.Avatar').forEach((el) => {
     setImportant(el, 'border-radius', AVATAR_RADIUS);
     setImportant(el, 'clip-path', 'none');
     setImportant(el, 'overflow', 'hidden');
-    setImportant(el, 'transform', 'none');
+  });
+  document.querySelectorAll<HTMLElement>('.Avatar__icon, .avatar-wrapper').forEach((el) => {
+    setImportant(el, 'border-radius', '0');
+    setImportant(el, 'overflow', 'visible');
+    setImportant(el, 'clip-path', 'none');
   });
 }
 
