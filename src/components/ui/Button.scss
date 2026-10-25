@@ -280,7 +280,7 @@
 
       &.pill {
         padding: 0.3125rem 1rem;
-        border-radius: 1.25rem;
+        border-radius: 12px; /* OC skin */
       }
 
       &.with-icon {
@@ -319,7 +319,7 @@
 
         height: 1.75rem;
         padding: 0.25rem 0.5rem;
-        border-radius: 1rem;
+        border-radius: 10px; /* OC skin */
         font-size: 1rem;
       }
     }
@@ -361,7 +361,7 @@
     &.badge {
       padding-right: 1.75rem;
       padding-left: 1.75rem;
-      border-radius: 1.75rem;
+      border-radius: 12px; /* OC skin */
       text-transform: none;
     }
 

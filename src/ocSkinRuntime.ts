@@ -106,7 +106,18 @@ function collectReport() {
       const cs = getComputedStyle(el);
       return `av ${String(el.className).slice(0, 40)} ${Math.round(r.width)}x${Math.round(r.height)} r=${cs.borderRadius} ov=${cs.overflow}`;
     });
-  return [...rows.slice(0, 12), '--', ...avatars].join(' | ');
+  const icons = Array.from(document.querySelectorAll<HTMLElement>('i, svg, [class*="icon"], [class*="Icon"]'))
+    .filter((el) => {
+      const r = el.getBoundingClientRect();
+      return r.top < 130 && r.width > 4 && r.height > 4;
+    })
+    .slice(0, 10)
+    .map((el) => {
+      const cs = getComputedStyle(el);
+      const r = el.getBoundingClientRect();
+      return `ic ${String(el.className).slice(0, 34)} ${Math.round(r.width)}x${Math.round(r.height)} c=${cs.color} op=${cs.opacity}`;
+    });
+  return [...rows.slice(0, 10), '--', ...avatars, '--', ...icons].join(' | ');
 }
 
 declare global {
