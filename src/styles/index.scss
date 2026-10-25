@@ -1067,3 +1067,6 @@ html body [class*="LeftMainHeader"] input, html body [class*="LeftHeader"] input
 html body [class*="LeftMainHeader"] input::placeholder, html body [class*="LeftHeader"] input::placeholder {
   color: #4D5761 !important; -webkit-text-fill-color: #4D5761 !important;
 }
+
+/* skin build marker: readable from JS so the app can prove which CSS it loaded */
+:root { --oc-skin-version: "23"; }
