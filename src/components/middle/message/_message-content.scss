@@ -1166,3 +1166,8 @@ blockquote, .blockquote {
     background-color: transparent;
   }
 }
+
+/* OC shape: no bubble tails */
+.svg-appendix {
+  display: none !important;
+}
