@@ -21,7 +21,7 @@
   padding-right: max(0.25rem, env(safe-area-inset-right));
   padding-bottom: 0.25rem;
   padding-left: max(0.25rem, env(safe-area-inset-left));
-  border-radius: 2rem;
+  border-radius: 12px; /* OC shape: header bar */
 
   background: var(--color-background);
   box-shadow: var(--shadow-pane);
@@ -98,7 +98,7 @@
     justify-content: flex-end;
 
     margin-left: auto;
-    border-radius: 2rem;
+    border-radius: 12px; /* OC shape: header bar */
 
     background-color: var(--color-background);
 
